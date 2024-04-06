@@ -30,11 +30,10 @@ const getAll = (req: Request, res: Response, next: NextFunction) => {
 const create = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { url } = req.body;
-
     const urlRegex = /^(http|https):\/\/[^ "]+$/;
 
     if (!urlRegex.test(url)) {
-      res.status(400).send({ status: 400, message: "Invalid URL" });
+      res.status(400).send({ status: 200, message: "Invalid URL" });
     } else {
       const key = generate();
       shortenData.set(key, url);
