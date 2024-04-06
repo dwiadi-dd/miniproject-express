@@ -1,7 +1,6 @@
 import { Router, Request, Response } from "express";
 import shorten from "../handlers/shorten";
 import { handleInputErrors } from "../modules/middleware";
-// import { successRes } from "./helpers/response";
 
 const router = Router();
 
