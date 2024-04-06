@@ -33,11 +33,13 @@ const create = (req: Request, res: Response, next: NextFunction) => {
     const urlRegex = /^(http|https):\/\/[^ "]+$/;
 
     if (!urlRegex.test(url)) {
-      res.status(400).send({ status: 200, message: "Invalid URL" });
+      res
+        .status(400)
+        .send({ status: 400, success: false, message: "Invalid URL" });
     } else {
       const key = generate();
       shortenData.set(key, url);
-      res.send({ status: 200, message: "success", data: key });
+      res.send({ status: 200, success: true, message: "success", data: key });
     }
   } catch (error) {
     next(error);
